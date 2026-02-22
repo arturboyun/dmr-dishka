@@ -1,0 +1,13 @@
+[pytest]
+minversion = "9.0"
+addopts = [
+    "--cov=dmr_dishka",
+    "--cov-config=.coveragerc",
+    "--cov-append",
+    "--cov-report=term-missing",
+    "--verbose",
+]
+asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "auto"
+DJANGO_SETTINGS_MODULE = "django_example.app.settings"
+pythonpath = ["src"]

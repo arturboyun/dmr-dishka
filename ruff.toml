@@ -1,0 +1,59 @@
+target-version = "py310"
+
+line-length = 79
+
+include = [
+    "src/**.py",
+    "tests/**.py",
+    "examples/**.py",
+    "noxfile.py",
+]
+
+[lint]
+preview = true
+select = ["ALL"]
+ignore = [
+    "ARG",
+    "ANN",
+    "D",
+    "CPY001",
+    "RUF029",
+    "RET505",
+    "ISC003",
+    ########
+    "PLR0913",
+    "PLR6201",
+    "PLR6301",
+    ########
+    "EM101",
+    "EM102",
+    ########
+    "PT001",
+    "PT023",
+    ########
+    "SIM103",
+    "SIM108",
+    "SIM114",
+    ########
+    "TC001",
+    "TC002",
+    "TC003",
+    "TC006",
+]
+
+[lint.per-file-ignores]
+"examples/**" = [
+    "INP001",
+    "S104",
+]
+"tests/**" = [
+    "S101",
+]
+
+[lint.isort]
+force-wrap-aliases = true
+combine-as-imports = true
+no-lines-before = ["local-folder"]
+
+[lint.flake8-tidy-imports]
+ban-relative-imports = "parents"

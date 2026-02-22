@@ -1,0 +1,91 @@
+# Django Modern REST integration for Dishka
+
+This package provides integration of [Dishka](http://github.com/reagento/dishka/) dependency injection framework and [Modern REST framework for Django](https://github.com/wemake-services/django-modern-rest) with types and async support!
+
+## Installation (not published on PyPI yet)
+
+TODO: publish on PyPI and update installation instructions
+
+```bash
+pip install dmr-dishka
+```
+
+```bash
+uv add dmr-dishka
+```
+
+## How to use async
+
+1. Import
+
+```python
+from dishka import Provider, provide, Scope
+
+class YourProvider(Provider):
+    @provide(scope=Scope.REQUEST)
+    def create_x(self, request: Request) -> X:
+         ...
+```
+
+1. Create provider.
+
+```python
+class YourProvider(Provider):
+    @provide(scope=Scope.REQUEST)
+    def create_x(self) -> X:
+         ...
+```
+
+1. Mark those of your handlers parameters which are to be injected with `FromDishka[]` and decorate them using `@inject`
+
+```python
+from dmr_dishka.integration import inject
+
+class ExampleBlueprint(Controller[MsgspecSerializer]):
+    @inject
+    async def get(self, x: FromDishka[X])
+        ...
+```
+
+1. Make container
+
+```python
+container = make_async_container(YourProvider())
+```
+
+1. Setup dishka integration in your `asgi.py`
+
+```python
+from django_example.app.ioc import AppProvider
+from dmr_dishka.integration import setup_dishka
+
+container = make_async_container(AppProvider())
+setup_dishka(container)
+```
+
+## How to use sync
+
+1. Steps 1 and 2 is identical to async
+2. In step 3 you need to decorate your handlers with `@inject_sync` and their parameters should be marked with `FromDishka[]` as well
+
+```python
+from dmr_dishka.integration import inject_sync
+
+class ExampleBlueprint(Controller[MsgspecSerializer]):
+    @inject_sync
+    def get(self, x: FromDishka[X])
+        ...
+```
+
+1. Step 4 is identical to async
+2. In step 5 need to setup dishka in your `wsgi.py` instead of `asgi.py`
+
+```python
+from django_example.app.ioc import AppProvider
+from dmr_dishka.integration import setup_dishka
+
+container = make_async_container(AppProvider())
+setup_dishka(container)
+```
+
+| Check src/django_example for more examples of usage.

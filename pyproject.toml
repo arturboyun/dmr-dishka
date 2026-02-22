@@ -1,0 +1,27 @@
+[project]
+name = "dmr_dishka"
+version = "0.0.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Artur Boyun", email = "arturboyun@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = ["daphne>=4.2.1", "dishka>=1.8.0", "django>=5.2.0"]
+
+[build-system]
+requires = ["uv_build>=0.9.27,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv_build]
+include = ["src/dmr_dishka", "src/django_example"]
+
+[dependency-groups]
+dev = [
+    "django_modern_rest@git+https://github.com/wemake-services/django-modern-rest",
+    "django-stubs>=5.2.9",
+    "msgspec>=0.20.0",
+    "mypy>=1.19.1",
+    "nox>=2026.2.9",
+    "pytest-asyncio>=1.3.0",
+    "pytest-django>=4.12.0",
+    "ruff>=0.15.2",
+]
