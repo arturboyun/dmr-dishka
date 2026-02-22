@@ -1,11 +1,39 @@
 [project]
 name = "dmr_dishka"
 version = "0.0.1"
-description = "Add your description here"
+description = "Integration of Dishka dependency injection framework and Modern REST framework for Django with types and async support!"
 readme = "README.md"
 authors = [{ name = "Artur Boyun", email = "arturboyun@gmail.com" }]
 requires-python = ">=3.11"
 dependencies = ["daphne>=4.2.1", "dishka>=1.8.0", "django>=5.2.0"]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+]
+urls = { "Source Code" = "https://github.com/arturboyun/dmr-dishka", "Issues" = "https://github.com/arturboyun/dmr-dishka/issues" }
+keywords = [
+    "django",
+    "dependency injection",
+    "di",
+    "async",
+    "types",
+    "modern rest",
+    'python',
+    'dishka',
+    'dmr',
+    'django modern rest',
+]
 
 [build-system]
 requires = ["uv_build>=0.9.27,<0.10.0"]
