@@ -4,7 +4,7 @@ version = "0.0.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "Artur Boyun", email = "arturboyun@gmail.com" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = ["daphne>=4.2.1", "dishka>=1.8.0", "django>=5.2.0"]
 
 [build-system]

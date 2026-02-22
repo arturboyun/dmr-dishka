@@ -1,6 +1,6 @@
 import nox
 
-PYTHON_VERSIONS = ["3.10", "3.11", "3.12", "3.13", "3.14"]
+PYTHON_VERSIONS = ["3.11", "3.12", "3.13", "3.14"]
 
 # django-modern-rest is developed alongside this package; fall back to GitHub
 _DMR_GH = "django_modern_rest@git+https://github.com/wemake-services/django-modern-rest"
