@@ -1,6 +1,6 @@
 [project]
 name = "dmr_dishka"
-version = "0.0.1"
+version = "v0.0.1-alpha1"
 description = "Integration of Dishka dependency injection framework and Modern REST framework for Django with types and async support!"
 readme = "README.md"
 authors = [{ name = "Artur Boyun", email = "arturboyun@gmail.com" }]
