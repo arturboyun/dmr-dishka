@@ -3,8 +3,8 @@
 [![test](https://github.com/arturboyun/dmr-dishka/actions/workflows/tests.yml/badge.svg?event=push)](https://github.com/arturboyun/dmr-dishka/actions/workflows/tests.yml)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/arturboyun/dmr-dishka/tests.yml)](https://github.com/arturboyun/dmr-dishka/actions)
 [![License](https://img.shields.io/github/license/arturboyun/dmr-dishka)](https://github.com/arturboyun/dmr-dishka/blob/main/LICENSE)
-[![PyPI version](https://img.shields.io/pypi/v/dmr-dishka)](https://pypi.org/project/dmr-dishka/)
-[![Python Version](https://img.shields.io/pypi/pyversions/dmr-dishka)](https://pypi.org/project/dmr-dishka/)
+![Version](https://img.shields.io/pypi/v/dmr-dishka)
+![Python Version](https://img.shields.io/pypi/pyversions/dmr-dishka)
 
 This package provides integration of [Dishka](http://github.com/reagento/dishka/) dependency injection framework and [Modern REST framework for Django](https://github.com/wemake-services/django-modern-rest) with types and async support!
 
