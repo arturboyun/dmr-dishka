@@ -10,6 +10,13 @@
 
 This package provides integration of [Dishka](http://github.com/reagento/dishka/) dependency injection framework and [Modern REST framework for Django](https://github.com/wemake-services/django-modern-rest) with types and async support!
 
+## Features
+
+- Support for SESSION and REQUEST scoped dependencies
+- Easy setup and integration with Django Modern REST framework
+- Support for both async and sync views
+- Support for Django views
+
 ## Installation
 
 ```bash
@@ -33,7 +40,7 @@ class YourProvider(Provider):
          ...
 ```
 
-2. Create provider.
+1. Create provider.
 
 ```python
 class YourProvider(Provider):
@@ -42,7 +49,7 @@ class YourProvider(Provider):
          ...
 ```
 
-3. Mark those of your handlers parameters which are to be injected with `FromDishka[]` and decorate them using `@inject`
+1. Mark those of your handlers parameters which are to be injected with `FromDishka[]` and decorate them using `@inject`
 
 ```python
 from dmr_dishka.integration import inject
@@ -59,7 +66,7 @@ class ExampleBlueprint(Controller[MsgspecSerializer]):
 container = make_async_container(YourProvider())
 ```
 
-2. Setup dishka integration in your `asgi.py`
+1. Setup dishka integration in your `asgi.py`
 
 ```python
 # asgi.py
@@ -85,8 +92,8 @@ class ExampleBlueprint(Controller[MsgspecSerializer]):
         ...
 ```
 
-3. Step 4 is identical to async
-4. In step 5 need to setup dishka in your `wsgi.py` instead of `asgi.py`
+1. Step 4 is identical to async
+2. In step 5 need to setup dishka in your `wsgi.py` instead of `asgi.py`
 
 ```python
 # wsgi.py

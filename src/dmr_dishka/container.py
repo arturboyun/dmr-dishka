@@ -23,11 +23,7 @@ def container_middleware(
     if iscoroutinefunction(get_response):
         async_get_response = cast(AsyncGetResponseCallable, get_response)
 
-        async def async_middleware(
-            request: HttpRequest,
-        ) -> HttpResponse:
-            # Code to be executed for each request before
-            # the view (and later middleware) are called.
+        async def async_middleware(request: HttpRequest) -> HttpResponse:
             async with settings.__DISHKA_CONTAINER__(
                 {HttpRequest: request},
                 scope=Scope.SESSION,
@@ -39,8 +35,6 @@ def container_middleware(
         get_response = cast(SyncGetResponseCallable, get_response)
 
         def sync_middleware(request: HttpRequest) -> HttpResponse:
-            # Code to be executed for each request before
-            # the view (and later middleware) are called.
             with settings.__DISHKA_CONTAINER__(
                 {HttpRequest: request},
                 scope=Scope.SESSION,
