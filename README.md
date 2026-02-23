@@ -105,4 +105,4 @@ container = make_container(AppProvider())
 setup_dishka(container)
 ```
 
-| Check src/django_example for more examples of usage.
+| Check src/django_example for more examples of usage and vanila django view support.
