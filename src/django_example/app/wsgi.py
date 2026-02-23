@@ -14,10 +14,11 @@ from django.core.wsgi import get_wsgi_application
 
 from django_example.app.ioc import AppProvider
 from dmr_dishka.integration import setup_dishka
+from dmr_dishka.provider import DjangoProvider
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_example.app.settings")
 
-container = make_container(AppProvider())
+container = make_container(DjangoProvider(), AppProvider())
 setup_dishka(container)
 
 application = get_wsgi_application()

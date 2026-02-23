@@ -7,6 +7,7 @@ from dishka import (
 )
 
 from dmr_dishka.integration import setup_dishka
+from dmr_dishka.provider import DjangoProvider
 
 
 class TestProvider(Provider):
@@ -18,8 +19,8 @@ class TestProvider(Provider):
 @pytest.fixture(scope="session", autouse=True)
 def setup_test_container() -> None:
     """
-    Set up a test container with a single provider that returns a string.  This container is used in both the middleware and integration tests to verify that
-    the same dependencies are resolved throughout the
+    This fixture sets up the Dishka container for testing.
+    It is automatically used in all tests.
     """
-    container = make_async_container(TestProvider())
+    container = make_async_container(DjangoProvider(), TestProvider())
     setup_dishka(container)
