@@ -6,8 +6,6 @@
 ![Version](https://img.shields.io/pypi/v/dmr-dishka)
 ![Python Version](https://img.shields.io/pypi/pyversions/dmr-dishka)
 
-> PyPi version and python version is cached now! Sorry for that.
-
 This package provides integration of [Dishka](http://github.com/reagento/dishka/) dependency injection framework and [Modern REST framework for Django](https://github.com/wemake-services/django-modern-rest) with types and async support!
 
 ## Features
