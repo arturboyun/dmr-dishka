@@ -62,6 +62,8 @@ container = make_async_container(YourProvider())
 2. Setup dishka integration in your `asgi.py`
 
 ```python
+# asgi.py
+from dishka import make_async_container
 from django_example.app.ioc import AppProvider
 from dmr_dishka.integration import setup_dishka
 
@@ -87,10 +89,12 @@ class ExampleBlueprint(Controller[MsgspecSerializer]):
 4. In step 5 need to setup dishka in your `wsgi.py` instead of `asgi.py`
 
 ```python
+# wsgi.py
+from dishka import make_container
 from django_example.app.ioc import AppProvider
 from dmr_dishka.integration import setup_dishka
 
-container = make_async_container(AppProvider())
+container = make_container(AppProvider())
 setup_dishka(container)
 ```
 
