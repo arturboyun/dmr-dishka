@@ -10,10 +10,10 @@ This package provides integration of [Dishka](http://github.com/reagento/dishka/
 
 ## Features
 
-- Support for SESSION and REQUEST scoped dependencies
-- Easy setup and integration with Django Modern REST framework
-- Support for both async and sync views
-- Support for Django views
+- [x] Automatic REQUEST and SESSION scope management using middleware
+- [x] Easy setup and integration with Django Modern REST framework
+- [x] Support for both async and sync views
+- [x] Support for Django views
 
 ## Installation
 
