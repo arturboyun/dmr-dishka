@@ -62,7 +62,8 @@ async def test_inject_resolves_dependency_from_request_container() -> None:
 
         @inject
         async def handler(
-            request: HttpRequest, greeting: FromDishka[str]
+            request: HttpRequest,
+            greeting: FromDishka[str],
         ) -> str:
             return greeting
 
@@ -156,24 +157,31 @@ async def test_inject_via_middleware_full_cycle() -> None:
     Full cycle: middleware attaches container → inject resolves dependency.
     No django_example app involved.
     """
+    from django.conf import settings as django_settings
+
+    original_container = getattr(django_settings, "__DISHKA_CONTAINER__", None)
     container = make_async_container(GreetingProvider())
     setup_dishka(container)
+    try:
+        resolved: dict[str, object] = {}
 
-    resolved: dict[str, object] = {}
+        @inject
+        async def get_response(
+            request: HttpRequest,
+            greeting: FromDishka[str],
+        ) -> HttpResponse:
+            resolved["greeting"] = greeting
+            return HttpResponse("ok")
 
-    @inject
-    async def get_response(
-        request: HttpRequest,
-        greeting: FromDishka[str],
-    ) -> HttpResponse:
-        resolved["greeting"] = greeting
-        return HttpResponse("ok")
+        middleware = cast(
+            AsyncGetResponseCallable,
+            container_middleware(get_response),
+        )
+        factory = RequestFactory()
+        response = await middleware(factory.get("/"))
 
-    middleware = cast(
-        AsyncGetResponseCallable, container_middleware(get_response)
-    )
-    factory = RequestFactory()
-    response = await middleware(factory.get("/"))
-
-    assert response.status_code == 200
-    assert resolved["greeting"] == "injected_value"
+        assert response.status_code == 200
+        assert resolved["greeting"] == "injected_value"
+    finally:
+        if original_container is not None:
+            django_settings.__DISHKA_CONTAINER__ = original_container
