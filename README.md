@@ -38,7 +38,7 @@ class YourProvider(Provider):
          ...
 ```
 
-1. Create provider.
+2. Create provider.
 
 ```python
 class YourProvider(Provider):
@@ -47,7 +47,7 @@ class YourProvider(Provider):
          ...
 ```
 
-1. Mark those of your handlers parameters which are to be injected with `FromDishka[]` and decorate them using `@inject`
+3. Mark those of your handlers parameters which are to be injected with `FromDishka[]` and decorate them using `@inject`
 
 ```python
 from dmr_dishka.integration import inject
@@ -58,13 +58,13 @@ class ExampleBlueprint(Controller[MsgspecSerializer]):
         ...
 ```
 
-1. Make container
+4. Make container
 
 ```python
 container = make_async_container(YourProvider())
 ```
 
-1. Setup dishka integration in your `asgi.py`
+5. Setup dishka integration in your `asgi.py`
 
 ```python
 # asgi.py
@@ -90,8 +90,8 @@ class ExampleBlueprint(Controller[MsgspecSerializer]):
         ...
 ```
 
-1. Step 4 is identical to async
-2. In step 5 need to setup dishka in your `wsgi.py` instead of `asgi.py`
+3. Step 4 is identical to async
+4. In step 5 need to setup dishka in your `wsgi.py` instead of `asgi.py`
 
 ```python
 # wsgi.py

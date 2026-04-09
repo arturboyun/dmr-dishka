@@ -1,7 +1,7 @@
 [pytest]
 minversion = "9.0"
 addopts = [
-    "--cov=dmr_dishka",
+    "--cov=src/dmr_dishka",
     "--cov-config=.coveragerc",
     "--cov-append",
     "--cov-report=term-missing",

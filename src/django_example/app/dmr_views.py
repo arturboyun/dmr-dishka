@@ -21,19 +21,7 @@ class UserModel(UserCreateModel):
     meta: dict[str, str] = {}
 
 
-class UserCreateBlueprint(
-    Controller[MsgspecSerializer],
-    Body[UserCreateModel],
-):
-    async def post(self, x: FromDishka[str]) -> UserModel:
-        return UserModel(
-            uid=uuid.uuid4(),
-            email=self.parsed_body.email,
-            meta={"from_dishka": x},
-        )
-
-
-class UserListBlueprint(Controller[MsgspecSerializer]):
+class UsersController(Controller[MsgspecSerializer]):
     @inject
     async def get(
         self,
@@ -55,9 +43,14 @@ class UserListBlueprint(Controller[MsgspecSerializer]):
             ),
         ]
 
-
-class UsersController(Controller[MsgspecSerializer]):
-    blueprints = (
-        UserListBlueprint,
-        UserCreateBlueprint,
-    )
+    @inject
+    async def post(
+        self,
+        parsed_body: Body[UserCreateModel],
+        x: FromDishka[str],
+    ) -> UserModel:
+        return UserModel(
+            uid=uuid.uuid4(),
+            email=parsed_body.email,
+            meta={"from_dishka": x},
+        )
