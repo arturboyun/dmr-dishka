@@ -22,6 +22,7 @@ from dmr.routing import Router
 from django_example.app.dmr_views import UsersController
 
 router = Router(
+    "api/",
     [
         path(
             "users/",
@@ -33,5 +34,5 @@ router = Router(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include((router.urls, "rest_app"), namespace="api")),
+    path(router.prefix, include((router.urls, "rest_app"), namespace="api")),
 ]

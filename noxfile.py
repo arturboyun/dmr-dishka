@@ -3,7 +3,7 @@ import nox
 PYTHON_VERSIONS = ["3.12", "3.13", "3.14"]
 
 # django-modern-rest is developed alongside this package; fall back to GitHub
-_DMR_GH = "django_modern_rest>=0.1.0"
+_DMR_GH = "django_modern_rest==0.5.0"
 
 TEST_DEPS = [
     "pytest",
